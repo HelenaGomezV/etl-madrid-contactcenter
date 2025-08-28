@@ -1,0 +1,6 @@
+notebook 
+ipython 
+pandas 
+chardet
+pyarrow
+pytest
