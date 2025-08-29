@@ -15,7 +15,7 @@ def task_clean_delitos() -> str:
     df = df.rename(columns={first_col: "municipio"})
     df["municipio"] = df["municipio"].astype(str).str.strip()
 
-    # Columnas que son años
+    # Columnas que son años (YYYY)
     year_cols = [c for c in df.columns if re.fullmatch(r"\d{4}", str(c))]
 
     if not year_cols:
@@ -24,7 +24,7 @@ def task_clean_delitos() -> str:
         long = df.melt(
             id_vars=["municipio"], value_vars=year_cols, var_name="anio", value_name="tasa"
         )
-        long["anio"] = pd.to_numeric(long["anio"], errors="coerce")
+        long["anio"] = pd.to_numeric(long["anio"], errors="coerce").astype("Int64")
         long["tasa"] = pd.to_numeric(long["tasa"], errors="coerce")
         long["tipo_delito"] = "total"
         clean = (

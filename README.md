@@ -95,3 +95,21 @@ Este repositorio usa [pre-commit](https://pre-commit.com/) para ejecutar formate
 pip install pre-commit
 pre-commit install          # instala el hook en .git/hooks
 pre-commit run -a           # (opcional) ejecuta sobre todo el repo
+
+
+## Flujo ETL
+
+1. **Carga RAW**
+   - Lee los **CSV originales** desde `data/`
+   - Guarda en `output/raw/*.parquet`
+
+2. **Limpieza y normalización**
+   - **renta_por_hogar.csv** → parseo de **código postal/municipio**, conversión de números.
+   - **delitos_por_municipio.csv** → eliminación de **metadatos iniciales**, reshape **wide → long**.
+   - **contact_center.csv** → limpieza de **IDs**, pivot de respuestas, agregado de **producto** y **duración**.
+
+3. **Integración final**
+   - Unión por **codigo_postal** y **municipio**
+   - Salida en:
+     ```
+     output/final/dataset_final.csv

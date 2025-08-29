@@ -1,68 +1,67 @@
-# src/task_clean_renta.py
-import numpy as np
 import pandas as pd
 
-from paths import p_clean_renta, p_raw_renta
+from paths import clean_dir, p_clean_renta, p_raw_renta
 
 
-def _series_or_empty(df: pd.DataFrame, col: str) -> pd.Series:
-    """Devuelve la columna como Series (str) si existe; si no, una Series vacía del mismo tamaño."""
-    if col in df.columns:
-        return df[col].astype(str)
-    # Series de strings vacíos, mismo índice
-    return pd.Series([""] * len(df), index=df.index, dtype="object")
+def _extract_cp_anywhere(s: pd.Series) -> pd.Series:
+    # Intenta extraer cualquier bloque de 5 dígitos (más robusto que “^\d{5} nombre”)
+    return s.astype(str).str.extract(r"(\d{5})", expand=False).str.zfill(5)
 
 
 def task_clean_renta() -> str:
-    df = pd.read_parquet(p_raw_renta())
+    clean_dir().mkdir(parents=True, exist_ok=True)
 
-    # --- Extraer código (5 dígitos al inicio) y nombre de municipio ---
-    if "Municipios" in df.columns:
-        s = df["Municipios"].astype(str)
-        df["codigo_postal"] = s.str.extract(r"^(\d{5})", expand=False)
-        df["municipio"] = s.str.replace(r"^\d{5}\s*", "", regex=True).str.strip()
+    df = pd.read_parquet(p_raw_renta()).copy()
+
+    # Columnas típicas INE: "Municipios"; "Indicadores..."; "Periodo"; "Total" (o similar)
+    cols = {c.lower(): c for c in df.columns}
+    muni_col = cols.get("municipios")
+    periodo_col = cols.get("periodo") or cols.get("año") or cols.get("anio")
+    total_col = None
+    for c in df.columns:
+        if str(c).strip().lower() in (
+            "total",
+            "total ",
+            "renta neta media por persona",
+            "renta_media",
+            "total,",
+        ):
+            total_col = c
+            break
+    if total_col is None:
+        # fallback: última columna
+        total_col = df.columns[-1]
+
+    # Extraer CP (robusto)
+    if muni_col is not None:
+        df["codigo_postal"] = _extract_cp_anywhere(df[muni_col])
+        df["municipio"] = (
+            df[muni_col].astype(str).str.replace(r"^\d{5}\s*", "", regex=True).str.strip()
+        )
     else:
-        # Fallbacks seguros (si faltan columnas devuelve Series vacías)
-        cp = _series_or_empty(df, "CP")
-        mun = _series_or_empty(df, "Municipio")
-        df["codigo_postal"] = cp.str.zfill(5)
-        df["municipio"] = mun.str.strip()
+        # Si no hay col de Municipios, intentamos con la primera col
+        first = df.columns[0]
+        df["codigo_postal"] = _extract_cp_anywhere(df[first])
+        df["municipio"] = df[first].astype(str)
 
-    # --- Periodo numérico ---
-    periodo = (
-        df["Periodo"] if "Periodo" in df.columns else pd.Series([None] * len(df), index=df.index)
+    df["periodo"] = pd.to_numeric(df[periodo_col], errors="coerce") if periodo_col else pd.NA
+    # Normalizar “Total” → numérico (coma/”.”)
+    df["renta_media"] = (
+        df[total_col]
+        .astype(str)
+        .str.replace(".", "", regex=False)  # miles
+        .str.replace(",", ".", regex=False)  # decimal
+        .str.replace(r"[^\d\.\-]", "", regex=True)
     )
-    df["periodo"] = pd.to_numeric(periodo, errors="coerce")
+    df["renta_media"] = pd.to_numeric(df["renta_media"], errors="coerce")
 
-    # --- Filtrar indicador de renta si existe la columna ---
-    ind_col = "Indicadores de renta media y mediana"
-    if ind_col in df.columns:
-        df = df[
-            df[ind_col]
-            .astype(str)
-            .str.contains("Renta neta media por persona", case=False, na=False)
-        ].copy()
-
-    # --- Limpiar la columna Total y convertir a float ---
-    if "Total" in df.columns:
-        total = df["Total"].astype(str)
-        # si la celda es exactamente "." => NaN (ruido típico)
-        total = total.mask(total.str.fullmatch(r"\."), np.nan)
-        # quitar separador de miles "." y normalizar decimal "," -> "."
-        total = total.str.replace(r"\.", "", regex=True).str.replace(",", ".", regex=False)
-        df["renta_media"] = pd.to_numeric(total, errors="coerce")
-    else:
-        df["renta_media"] = np.nan
-
-    # --- Seleccionar columnas limpias ---
-    clean = df[["codigo_postal", "municipio", "periodo", "renta_media"]].drop_duplicates()
+    clean = df[["codigo_postal", "municipio", "periodo", "renta_media"]].dropna(
+        subset=["codigo_postal"]
+    )
+    clean["codigo_postal"] = clean["codigo_postal"].str.zfill(5)
 
     out = p_clean_renta()
-    # Compatible con Py3.7 (sin missing_ok)
-    try:
+    if out.exists():
         out.unlink()
-    except FileNotFoundError:
-        pass
-
     clean.to_parquet(out, index=False)
     return str(out)

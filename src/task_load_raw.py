@@ -1,10 +1,8 @@
-# src/task_load_raw.py
 from __future__ import annotations
 
-import itertools
 from io import TextIOWrapper
 from pathlib import Path
-from typing import Dict, Iterable, Iterator, Optional
+from typing import Dict, Iterable, Optional
 
 import pandas as pd
 import pyarrow as pa
@@ -20,9 +18,12 @@ from paths import (
     raw_dir,
 )
 
+CHUNKSIZE = 200_000
+ENC = "latin1"
+SEP = ";"
 
-def safe_unlink(p: Path) -> None:
-    """Compatibilidad Py3.7: borrar si existe (sin missing_ok)."""
+
+def _safe_unlink(p: Path) -> None:
     try:
         if p.exists():
             p.unlink()
@@ -30,139 +31,116 @@ def safe_unlink(p: Path) -> None:
         pass
 
 
-# --- Heurísticos de cabecera para 'delitos' ---
-_HEADER_KEYS = (
-    ("Municipio", "Municipios"),
-    ("Periodo", "Año"),
-    ("Total", "Hechos", "Delitos", "Tasa"),
-)
+def _parquet_stream_write(
+    df_iter: Iterable[pd.DataFrame], out_path: Path, compression="zstd", level=7
+) -> None:
+    writer: Optional[pq.ParquetWriter] = None
+    try:
+        for chunk in df_iter:
+            table = pa.Table.from_pandas(chunk, preserve_index=False)
+            if writer is None:
+                writer = pq.ParquetWriter(
+                    where=str(out_path),
+                    schema=table.schema,
+                    compression=compression,
+                    compression_level=level,
+                    use_dictionary=True,
+                )
+            writer.write_table(table)
+    finally:
+        if writer:
+            writer.close()
 
 
-def _looks_like_header(line: str) -> bool:
-    """Comprueba si una línea parece ser cabecera CSV de 'delitos'."""
-    if line.count(";") < 2:
-        return False
-    low = line.lower()
-    return (
-        any(k.lower() in low for k in _HEADER_KEYS[0])
-        and any(k.lower() in low for k in _HEADER_KEYS[1])
-        and any(k.lower() in low for k in _HEADER_KEYS[2])
+def _read_csv_chunks_simple(path: Path) -> Iterable[pd.DataFrame]:
+    return pd.read_csv(path, sep=SEP, encoding=ENC, chunksize=CHUNKSIZE, low_memory=True)
+
+
+def _find_delitos_header_index(fh: TextIOWrapper, max_scan: int = 300) -> int:
+    # Relajado: primera línea con "Municipio" y al menos un ';'
+    pos = fh.tell()
+    header_idx = 0
+    for i in range(max_scan):
+        line = fh.readline()
+        if not line:
+            break
+        if ("Municipio" in line) and (";" in line):
+            header_idx = i
+            break
+    fh.seek(pos)
+    return header_idx
+
+
+def _read_csv_chunks_delitos(path: Path) -> Iterable[pd.DataFrame]:
+    # Maneja metadatos previos en el CSV oficial
+    with open(path, "r", encoding=ENC, errors="replace") as f:
+        header_idx = _find_delitos_header_index(f)
+    return pd.read_csv(
+        path,
+        sep=SEP,
+        encoding=ENC,
+        engine="python",
+        skiprows=header_idx,
+        chunksize=CHUNKSIZE,
+        low_memory=True,
     )
 
 
 class RawParquetLoader:
     def __init__(
-        self, chunksize: int = 200_000, compression: str = "zstd", compression_level: int = 7
+        self, chunksize: int = CHUNKSIZE, compression: str = "zstd", compression_level: int = 7
     ) -> None:
         self.chunksize = chunksize
         self.compression = compression
         self.compression_level = compression_level
 
-    # ---------------- Parquet stream writer ----------------
-    def _parquet_stream_write(self, df_iter: Iterable[pd.DataFrame], out_path: Path) -> None:
-        writer: Optional[pq.ParquetWriter] = None
-        try:
-            for chunk in df_iter:
-                table = pa.Table.from_pandas(chunk, preserve_index=False)
-                if writer is None:
-                    writer = pq.ParquetWriter(
-                        where=str(out_path),
-                        schema=table.schema,
-                        compression=self.compression,
-                        compression_level=self.compression_level,
-                        use_dictionary=True,
-                    )
-                writer.write_table(table)
-        finally:
-            if writer:
-                writer.close()
-
-    # ---------------- Lectura simple (renta/contact) ----------------
-    def _read_csv_chunks_simple(self, path: Path) -> Iterable[pd.DataFrame]:
-        return pd.read_csv(
-            path,
-            sep=";",
-            encoding="latin1",
-            chunksize=self.chunksize,
-            low_memory=True,
-        )
-
-    # ---------------- Detección de cabecera (delitos) ----------------
-    @staticmethod
-    def _find_delitos_header_index(fh: TextIOWrapper, max_scan: int = 300) -> int:
-        """
-        Escanea las primeras `max_scan` líneas y devuelve el índice (0-based)
-        donde empieza la cabecera del CSV de delitos.
-        """
-        pos = fh.tell()
-        try:
-            fh.seek(0)
-            candidate = None
-            for i, line in enumerate(itertools.islice(fh, max_scan)):
-                # Saltar vacías/comentarios
-                if not line.strip() or line.lstrip().startswith(("#", "//")):
-                    continue
-                if _looks_like_header(line):
-                    return i
-                # respaldo: primera línea con varios ';'
-                if candidate is None and line.count(";") >= 2:
-                    candidate = i
-            return candidate if candidate is not None else 0
-        finally:
-            fh.seek(pos)
-
-    # ---------------- Lectura delitos (saltando preámbulo) ----------------
-    def _read_csv_chunks_delitos(self, path: Path) -> Iterator[pd.DataFrame]:
-        with open(path, "r", encoding="latin1", errors="replace") as f:
-            header_idx = self._find_delitos_header_index(f, max_scan=300)
-
-        # Importante: saltamos las líneas antes de la cabecera y decimos que la primera
-        # restante es el header (header=0). El engine='python' es más tolerante.
-        return pd.read_csv(
-            path,
-            sep=";",
-            encoding="latin1",
-            engine="python",
-            skiprows=header_idx,  # elimina metadatos previos
-            header=0,  # la primera fila restante es la cabecera
-            chunksize=self.chunksize,
-            on_bad_lines="error",
-        )
-
-    # ---------------- Builders ----------------
     def build_renta_raw(self) -> str:
-        out_path = p_raw_renta()
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        safe_unlink(out_path)
-        self._parquet_stream_write(self._read_csv_chunks_simple(p_csv_renta()), out_path)
-        return str(out_path)
+        out = p_raw_renta()
+        out.parent.mkdir(parents=True, exist_ok=True)
+        _safe_unlink(out)
+        _parquet_stream_write(
+            _read_csv_chunks_simple(p_csv_renta()),
+            out,
+            compression=self.compression,
+            level=self.compression_level,
+        )
+        return str(out)
 
     def build_delitos_raw(self) -> str:
-        out_path = p_raw_delitos()
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        safe_unlink(out_path)
-        self._parquet_stream_write(self._read_csv_chunks_delitos(p_csv_delitos()), out_path)
-        return str(out_path)
+        out = p_raw_delitos()
+        out.parent.mkdir(parents=True, exist_ok=True)
+        _safe_unlink(out)
+        _parquet_stream_write(
+            _read_csv_chunks_delitos(p_csv_delitos()),
+            out,
+            compression=self.compression,
+            level=self.compression_level,
+        )
+        return str(out)
 
     def build_contact_raw(self) -> str:
-        out_path = p_raw_contact()
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        safe_unlink(out_path)
-        self._parquet_stream_write(self._read_csv_chunks_simple(p_csv_contact()), out_path)
-        return str(out_path)
+        out = p_raw_contact()
+        out.parent.mkdir(parents=True, exist_ok=True)
+        _safe_unlink(out)
+        _parquet_stream_write(
+            _read_csv_chunks_simple(p_csv_contact()),
+            out,
+            compression=self.compression,
+            level=self.compression_level,
+        )
+        return str(out)
 
-    # ---------------- Orquestador ----------------
     def run(self, only: str = "all") -> Dict[str, str]:
         raw_dir().mkdir(parents=True, exist_ok=True)
-        outputs: Dict[str, str] = {}
+        out = {}
         if only in ("all", "renta"):
-            outputs["renta"] = self.build_renta_raw()
+            out["renta"] = self.build_renta_raw()
         if only in ("all", "delitos"):
-            outputs["delitos"] = self.build_delitos_raw()
+            out["delitos"] = self.build_delitos_raw()
         if only in ("all", "contact"):
-            outputs["contact"] = self.build_contact_raw()
-        return outputs
+            out["contact"] = self.build_contact_raw()
+        return out
 
 
 def task_load_raw() -> dict:
-    return RawParquetLoader().run(only="all")
+    return RawParquetLoader().run("all")

@@ -34,17 +34,16 @@ def task_clean_contact() -> str:
 
     df = pd.read_parquet(p_raw_contact())
 
-    # Limpiar sessionID (quitar b'...')
-    if "sessionID" in df.columns:
-        df["sessionID"] = (
-            df["sessionID"]
-            .astype(str)
-            .str.replace(r"^b'", "", regex=True)
-            .str.replace(r"'$", "", regex=True)
-            .str.strip()
-        )
-    else:
+    # Limpiar sessionID b'...'
+    if "sessionID" not in df.columns:
         raise KeyError("Falta columna 'sessionID' en contact RAW")
+    df["sessionID"] = (
+        df["sessionID"]
+        .astype(str)
+        .str.replace(r"^b'", "", regex=True)
+        .str.replace(r"'$", "", regex=True)
+        .str.strip()
+    )
 
     # Normalizar CP y duración
     if "CP" in df.columns:
@@ -52,8 +51,7 @@ def task_clean_contact() -> str:
     if "duration_call_mins" in df.columns:
         df["duration_call_mins"] = pd.to_numeric(df["duration_call_mins"], errors="coerce")
 
-    # Pivot de respuestas (si existe funnel_Q)
-    wide = pd.DataFrame({"sessionID": df["sessionID"].drop_duplicates()})
+    # Pivot respuestas (si existen)
     if "funnel_Q" in df.columns:
         df["_flag"] = 1
         wide = (
@@ -62,6 +60,8 @@ def task_clean_contact() -> str:
             .astype(int)
             .reset_index()
         )
+    else:
+        wide = pd.DataFrame({"sessionID": df["sessionID"].drop_duplicates()})
 
     # Atributos de sesión
     agg = df.groupby("sessionID", as_index=False).agg(
@@ -69,7 +69,7 @@ def task_clean_contact() -> str:
             "DNI": _first_notna if "DNI" in df.columns else _first_notna,
             "Telef": _first_notna if "Telef" in df.columns else _first_notna,
             "CP": _first_notna if "CP" in df.columns else _first_notna,
-            "duration_call_mins": "max" if "duration_call_mins" in df.columns else _first_notna,
+            "duration_call_mins": ("max" if "duration_call_mins" in df.columns else _first_notna),
             "Producto": _first_notna if "Producto" in df.columns else _first_notna,
         }
     )

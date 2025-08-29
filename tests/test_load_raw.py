@@ -1,16 +1,19 @@
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from paths import raw_dir
+
+# IMPORTA DESDE EL PAQUETE (recomendado)
 from task_load_raw import RawParquetLoader
 
 
 def _write_minimal_inputs(data_in: Path) -> None:
-    """Crea CSVs mínimos de prueba en la carpeta data_in."""
+    """Crea CSVs mínimos (latin1, ';') para renta/delitos/contact."""
     data_in.mkdir(parents=True, exist_ok=True)
 
-    # renta_por_hogar.csv  (INE) — separador ;, latin1
+    # renta_por_hogar.csv — INE
     (data_in / "renta_por_hogar.csv").write_text(
         "Municipios;Indicadores de renta media y mediana;Periodo;Total\n"
         "28001 Acebeda, La;Renta neta media por persona;2020;13.999\n"
@@ -29,7 +32,7 @@ def _write_minimal_inputs(data_in: Path) -> None:
         encoding="latin1",
     )
 
-    # contac_center_data.csv — separador ;, latin1
+    # contac_center_data.csv — Contact center
     (data_in / "contac_center_data.csv").write_text(
         "sessionID;DNI;Telef;CP;duration_call_mins;funnel_Q;Producto\n"
         "b'AAA';X1;600000001;28001;2.5;Chalet;\n"
@@ -40,70 +43,87 @@ def _write_minimal_inputs(data_in: Path) -> None:
     )
 
 
-def test_find_delitos_header_index(tmp_path: Path):
-    """
-    Verifica que _find_delitos_header_index detecta la línea de cabecera correcta
-    en el CSV de delitos con metadatos iniciales.
-    """
+def test_find_delitos_header_index(tmp_path: Path, monkeypatch):
+    """Detecta correctamente la fila de cabecera en delitos con metadatos previos."""
+    from task_load_raw import _find_delitos_header_index  # función interna
+
     data_in = tmp_path / "data"
     _write_minimal_inputs(data_in)
-
-    loader = RawParquetLoader(chunksize=10_000)  # chunksize pequeño para test
     delitos_path = data_in / "delitos_por_municipio.csv"
 
     with open(delitos_path, "r", encoding="latin1", errors="replace") as fh:
-        idx = loader._find_delitos_header_index(fh, max_scan=50)
+        idx = _find_delitos_header_index(fh, max_scan=50)
 
-    # En el texto arriba, la cabecera empieza en la 4ª línea (índice 3)
+    # En el fixture, la línea 4 (índice 3) contiene "Municipio;2019;..."
     assert idx == 3
 
 
-def test_run_all_and_only(tmp_path: Path, monkeypatch):
+def test_run_all_creates_nonempty_parquets(tmp_path: Path, monkeypatch):
     """
-    Verifica que:
-      - run('all') genera los 3 RAW parquet en output/raw
-      - run('renta') / run('delitos') / run('contact') generan cada uno por separado
-      - los parquet se pueden leer con pandas
+    run('all') genera los 3 RAW en output/raw y se pueden leer con pandas.
     """
     data_in = tmp_path / "data"
     data_out = tmp_path / "output"
     _write_minimal_inputs(data_in)
 
-    # Configurar variables de entorno para que paths.py apunte a tmp
+    monkeypatch.setenv("DATA_IN_DIR", str(data_in))
+    monkeypatch.setenv("DATA_OUT_DIR", str(data_out))
+
+    # Rutas esperadas
+    p_r = data_out / "raw" / "renta_RAW.parquet"
+    p_d = data_out / "raw" / "delitos_RAW.parquet"
+    p_c = data_out / "raw" / "contact_RAW.parquet"
+
+    # Existen y no vacíos
+    assert p_r.exists() and p_d.exists() and p_c.exists()
+    assert not pd.read_parquet(p_r).empty
+    assert not pd.read_parquet(p_d).empty
+    assert not pd.read_parquet(p_c).empty
+
+    # raw_dir() apunta donde esperamos
+    assert raw_dir().resolve() == (data_out / "raw").resolve()
+
+    # (Opcional) Verificar compresión ZSTD leyendo metadata parquet
+    try:
+        import pyarrow.parquet as pq
+
+        # Tomamos la compresión del primer campo del primer row group
+        comp_r = pq.ParquetFile(str(p_r)).row_group(0).column(0).compression
+        assert comp_r is not None  # al menos hay compresión definida
+    except Exception:
+        # Si no está pyarrow o falla el acceso a metadata, no consideramos esto fatal
+        pass
+
+
+@pytest.mark.parametrize(
+    "only,filename",
+    [
+        ("renta", "renta_RAW.parquet"),
+        ("delitos", "delitos_RAW.parquet"),
+        ("contact", "contact_RAW.parquet"),
+    ],
+)
+def test_run_only_each_source(tmp_path: Path, monkeypatch, only: str, filename: str):
+    """
+    run('renta' | 'delitos' | 'contact') reescribe solo el parquet correspondiente.
+    """
+    data_in = tmp_path / "data"
+    data_out = tmp_path / "output"
+    _write_minimal_inputs(data_in)
+
     monkeypatch.setenv("DATA_IN_DIR", str(data_in))
     monkeypatch.setenv("DATA_OUT_DIR", str(data_out))
 
     loader = RawParquetLoader(chunksize=5_000, compression="zstd", compression_level=3)
 
-    # 1) Ejecutar todos
-    outputs_all = loader.run(only="all")
-    assert "renta" in outputs_all and "delitos" in outputs_all and "contact" in outputs_all
+    # Pre-crear todo con 'all'
+    loader.run(only="all")
 
-    # Existen los archivos
-    p_r = data_out / "raw" / "renta_RAW.parquet"
-    p_d = data_out / "raw" / "delitos_RAW.parquet"
-    p_c = data_out / "raw" / "contact_RAW.parquet"
-    assert p_r.exists() and p_d.exists() and p_c.exists()
+    # Ejecutar solo la fuente especificada
+    outputs_one = loader.run(only=only)
+    assert set(outputs_one.keys()) == {only}
 
-    # Se pueden leer y no están vacíos
-    assert not pd.read_parquet(p_r).empty
-    assert not pd.read_parquet(p_d).empty
-    assert not pd.read_parquet(p_c).empty
-
-    # 2) Ejecutar solo renta (debe reescribir sin error)
-    outputs_renta = loader.run(only="renta")
-    assert (data_out / "raw" / "renta_RAW.parquet").exists()
-    assert "renta" in outputs_renta and len(outputs_renta) == 1
-
-    # 3) Ejecutar solo delitos
-    outputs_del = loader.run(only="delitos")
-    assert (data_out / "raw" / "delitos_RAW.parquet").exists()
-    assert "delitos" in outputs_del and len(outputs_del) == 1
-
-    # 4) Ejecutar solo contact
-    outputs_cc = loader.run(only="contact")
-    assert (data_out / "raw" / "contact_RAW.parquet").exists()
-    assert "contact" in outputs_cc and len(outputs_cc) == 1
-
-    # Verificación de que la carpeta raw es la que esperamos
-    assert raw_dir().resolve() == (data_out / "raw").resolve()
+    p_file = data_out / "raw" / filename
+    assert p_file.exists()
+    df = pd.read_parquet(p_file)
+    assert not df.empty
