@@ -7,6 +7,7 @@ from airflow.operators.python import PythonOperator
 from task_clean_contact import task_clean_contact
 from task_clean_delitos import task_clean_delitos
 from task_clean_renta import task_clean_renta
+from task_integration import task_integrate
 
 # Usa tu clase del loader
 from task_load_raw import RawParquetLoader
@@ -30,6 +31,10 @@ def clean_delitos_data():
 
 def clean_contact_data():
     return task_clean_contact()
+
+
+def final_integration_data():
+    return task_integrate()
 
 
 with DAG(
@@ -73,4 +78,9 @@ with DAG(
         python_callable=clean_contact_data,
     )
 
-    load_raw >> clean_renta >> clean_delitos >> clean_contact
+    data_integration = PythonOperator(
+        task_id="final_integration",
+        python_callable=final_integration_data,
+    )
+
+    load_raw >> clean_renta >> clean_delitos >> clean_contact >> data_integration

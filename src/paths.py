@@ -47,6 +47,12 @@ def clean_dir() -> Path:
     return d
 
 
+def final_dir() -> Path:
+    d = data_out_dir() / "final"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
 # --- outputs: ficheros ---
 def p_raw_renta() -> Path:
     return raw_dir() / "renta_RAW.parquet"
@@ -70,3 +76,7 @@ def p_clean_delitos() -> Path:
 
 def p_clean_contact() -> Path:
     return clean_dir() / "contact_CLEAN.parquet"
+
+
+def p_final_csv() -> Path:
+    return final_dir() / "integration.csv"
