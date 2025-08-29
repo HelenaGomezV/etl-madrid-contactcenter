@@ -1,4 +1,3 @@
-# tests/test_clean_delitos.py
 import pandas as pd
 
 from paths import p_clean_delitos, p_raw_delitos

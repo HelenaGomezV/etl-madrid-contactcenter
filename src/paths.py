@@ -66,3 +66,7 @@ def p_clean_renta() -> Path:
 
 def p_clean_delitos() -> Path:
     return clean_dir() / "delitos_CLEAN.parquet"
+
+
+def p_clean_contact() -> Path:
+    return clean_dir() / "contact_CLEAN.parquet"
