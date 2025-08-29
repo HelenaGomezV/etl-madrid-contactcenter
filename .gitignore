@@ -3,3 +3,6 @@
 anaconda_projects/
 logs/dag_processor_manager/
 logs/scheduler/
+example*
+dag_processor_manager*
+logs/
