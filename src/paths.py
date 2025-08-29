@@ -62,3 +62,7 @@ def p_raw_contact() -> Path:
 
 def p_clean_renta() -> Path:
     return clean_dir() / "renta_CLEAN.parquet"
+
+
+def p_clean_delitos() -> Path:
+    return clean_dir() / "delitos_CLEAN.parquet"

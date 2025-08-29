@@ -4,6 +4,7 @@ from airflow import DAG
 from airflow.models.param import Param
 from airflow.operators.python import PythonOperator
 
+from task_clean_delitos import task_clean_delitos
 from task_clean_renta import task_clean_renta
 
 # Usa tu clase del loader
@@ -20,6 +21,10 @@ def load_raw_one(source: str):
 
 def clean_renta_data():
     return task_clean_renta()
+
+
+def clean_delitos_data():
+    return task_clean_delitos()
 
 
 with DAG(
@@ -53,4 +58,9 @@ with DAG(
         python_callable=clean_renta_data,
     )
 
-    load_raw >> clean_renta
+    clean_delitos = PythonOperator(
+        task_id="clean_delitos",
+        python_callable=clean_delitos_data,
+    )
+
+    load_raw >> clean_renta >> clean_delitos
