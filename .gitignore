@@ -1,3 +1,5 @@
 .env
 .ipynb_checkpoints
 anaconda_projects/
+logs/dag_processor_manager/
+logs/scheduler/
