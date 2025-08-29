@@ -4,6 +4,8 @@ from airflow import DAG
 from airflow.models.param import Param
 from airflow.operators.python import PythonOperator
 
+from task_clean_renta import task_clean_renta
+
 # Usa tu clase del loader
 from task_load_raw import RawParquetLoader
 
@@ -16,9 +18,13 @@ def load_raw_one(source: str):
     RawParquetLoader().run(only=source)
 
 
+def clean_renta_data():
+    return task_clean_renta()
+
+
 with DAG(
     dag_id="etl_general",
-    description="ETL general (por ahora solo carga RAW).",
+    description="ETL general call center madrid.",
     start_date=datetime(2025, 1, 1),
     schedule=None,  # Ejecuta manualmente
     catchup=False,
@@ -41,3 +47,10 @@ with DAG(
         python_callable=_load_router,
         provide_context=True,
     )
+
+    clean_renta = PythonOperator(
+        task_id="clean_renta",
+        python_callable=clean_renta_data,
+    )
+
+    load_raw >> clean_renta
