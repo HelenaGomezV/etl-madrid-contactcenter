@@ -1,6 +1,10 @@
-notebook 
-ipython 
-pandas 
+notebook
+ipython
+pandas
 chardet
 pyarrow
 pytest
+pre-commit
+flake8
+black
+isort

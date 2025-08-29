@@ -60,8 +60,8 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     PYTHONPATH: /opt/airflow/src
-    DATA_IN_DIR: /opt/airflow/data      # CSV de entrada
-    DATA_OUT_DIR: /opt/airflow/output   # Salidas del pipeline
+    DATA_IN_DIR: /opt/airflow/data
+    DATA_OUT_DIR: /opt/airflow/output
   volumes:
     - ./src:/opt/airflow/src
     - ./data:/opt/airflow/data

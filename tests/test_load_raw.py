@@ -1,12 +1,9 @@
-# tests/test_task_load_raw_class.py
-
 from pathlib import Path
-import pandas as pd
-import io
 
-import pytest
-from task_load_raw import RawParquetLoader
+import pandas as pd
+
 from paths import raw_dir
+from task_load_raw import RawParquetLoader
 
 
 def _write_minimal_inputs(data_in: Path) -> None:

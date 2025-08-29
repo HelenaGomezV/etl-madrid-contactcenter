@@ -1,29 +1,29 @@
 
 # Airflow con Docker Compose + Makefile
 
-Este proyecto configura un entorno local de **Apache Airflow** con **PostgreSQL** y **Redis** usando `docker compose`.  
+Este proyecto configura un entorno local de **Apache Airflow** con **PostgreSQL** y **Redis** usando `docker compose`.
 La gestión se simplifica con un **Makefile**, que automatiza la creación del archivo `.env` (para claves y contraseñas) y el ciclo de vida de los contenedores.
 
 ---
 
 ##  Servicios incluidos
 
-- **Postgres** → base de datos para Airflow.  
-- **Redis** → backend de mensajes para Celery.  
-- **Airflow Webserver** → interfaz web (puerto 8080).  
-- **Airflow Scheduler** → planifica la ejecución de DAGs.  
-- **Airflow Worker** → ejecuta las tareas en paralelo.  
-- **Airflow Triggerer** → maneja triggers asíncronos.  
-- **Airflow Init** → inicializa la base de datos y crea el usuario admin.  
-- **Airflow CLI** → cliente para depuración y ejecución de comandos.  
+- **Postgres** → base de datos para Airflow.
+- **Redis** → backend de mensajes para Celery.
+- **Airflow Webserver** → interfaz web (puerto 8080).
+- **Airflow Scheduler** → planifica la ejecución de DAGs.
+- **Airflow Worker** → ejecuta las tareas en paralelo.
+- **Airflow Triggerer** → maneja triggers asíncronos.
+- **Airflow Init** → inicializa la base de datos y crea el usuario admin.
+- **Airflow CLI** → cliente para depuración y ejecución de comandos.
 - **Flower (opcional)** → monitor de Celery en puerto 5555.
 
 ---
 
 ##  Requisitos previos
 
-- [Docker](https://docs.docker.com/get-docker/)  
-- [Docker Compose v2](https://docs.docker.com/compose/install/)  
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose v2](https://docs.docker.com/compose/install/)
 - [GNU Make](https://www.gnu.org/software/make/)
 
 Verifica la instalación:
@@ -43,9 +43,9 @@ _AIRFLOW_WWW_USER_USERNAME=airflow
 _AIRFLOW_WWW_USER_PASSWORD=airflow
 ```
 
- al ejecutar `make env`.  
-- **Usuario Web** (`_AIRFLOW_WWW_USER_USERNAME`) → por defecto `airflow`.  
-- **Password Web** (`_AIRFLOW_WWW_USER_PASSWORD`) → por defecto `airflow`.  
+ al ejecutar `make env`.
+- **Usuario Web** (`_AIRFLOW_WWW_USER_USERNAME`) → por defecto `airflow`.
+- **Password Web** (`_AIRFLOW_WWW_USER_PASSWORD`) → por defecto `airflow`.
 
 ## Uso del Makefile
 
@@ -60,7 +60,7 @@ _AIRFLOW_WWW_USER_PASSWORD=airflow
 | `make clean`  | Detiene y elimina los volúmenes (se pierde la base de datos). |
 | `make destroy`| Igual que `clean` pero también borra el `.env`. |
 
-Accede a  http://localhost:8080 
+Accede a  http://localhost:8080
 
 
 # Analisis y exploracion de los datos.
@@ -70,12 +70,12 @@ python3 -m venv env
 source env/bin/activate
 pip install -r requiremnts
 ```
-# Desactivar entorno virtual 
+# Desactivar entorno virtual
 ```bash
 deactivate
 ```
 ## notebook analisis y entenidmiento de los datos.
-### Instalar jupyter 
+### Instalar jupyter
 ```bash
 # Instalar jupyter si no lo tienes
 pip install notebook ipython pandas chardet
@@ -83,3 +83,15 @@ pip install notebook ipython pandas chardet
 Dentro de la carpeta data/ encontrara el notebook donde miro que es necesario hacer para identificar como limpair los datos deacuerdo a la informacion obtenida de lso archivos csv.
 ```exploracion_dataset.ipnb```
 
+## Pre-commit
+
+Este repositorio usa [pre-commit](https://pre-commit.com/) para ejecutar formateo y *lint* **antes de cada `git commit`**:
+- **Black** (formato, `--line-length=100`)
+- **isort** (orden de imports, perfil `black`)
+- **Flake8** (estilo, `--ignore=E203,W503`)
+
+### Instalación (con pip/venv)
+```bash
+pip install pre-commit
+pre-commit install          # instala el hook en .git/hooks
+pre-commit run -a           # (opcional) ejecuta sobre todo el repo

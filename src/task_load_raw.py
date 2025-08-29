@@ -1,16 +1,24 @@
 # src/etl/task_load_raw.py
 
 from __future__ import annotations
+
 from io import TextIOWrapper
-from typing import Iterable, Optional, Dict
+from typing import Dict, Iterable, Optional
+
 import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
+
 from paths import (
-    p_csv_renta, p_csv_delitos, p_csv_contact,
-    p_raw_renta, p_raw_delitos, p_raw_contact,
+    p_csv_contact,
+    p_csv_delitos,
+    p_csv_renta,
+    p_raw_contact,
+    p_raw_delitos,
+    p_raw_renta,
     raw_dir,
 )
+
 
 class RawParquetLoader:
     """
@@ -89,13 +97,14 @@ class RawParquetLoader:
                 has_sep = s.count(";") >= 1
 
                 # Acepta patrones típicos: "Municipio;2019;2020;2021"
-                if (lower.startswith("municipio;") or lower.startswith("municipios;")) or (has_muni and has_sep):
+                if (lower.startswith("municipio;") or lower.startswith("municipios;")) or (
+                    has_muni and has_sep
+                ):
                     header_idx = i
                     break
         finally:
             fh.seek(pos)
         return header_idx
-
 
     def _read_csv_chunks_delitos(self, path) -> Iterable[pd.DataFrame]:
         """
@@ -167,4 +176,3 @@ def task_load_raw() -> dict:
     """
     loader = RawParquetLoader()
     return loader.run(only="all")
-

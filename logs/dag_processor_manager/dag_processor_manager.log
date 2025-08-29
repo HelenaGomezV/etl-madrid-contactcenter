@@ -1,9 +1,9 @@
-[2025-08-27T14:15:37.072+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-08-27T14:15:37.072+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time
 [2025-08-27T14:15:37.074+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
 [2025-08-27T14:15:37.074+0000] {manager.py:486} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
 [2025-08-27T14:15:37.074+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T14:15:37.085+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T14:15:37.178+0000] {manager.py:846} INFO - 
+[2025-08-27T14:15:37.178+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -46,7 +46,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/subdags/subdag.py                                                    0           0
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/plugins/workday.py                                                   0           0
 ================================================================================
-[2025-08-27T14:16:07.754+0000] {manager.py:846} INFO - 
+[2025-08-27T14:16:07.754+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -89,7 +89,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.19s           2025-08-27T14:15:39
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.17s           2025-08-27T14:15:38
 ================================================================================
-[2025-08-27T14:16:38.179+0000] {manager.py:846} INFO - 
+[2025-08-27T14:16:38.179+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -132,7 +132,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T14:16:09
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:16:08
 ================================================================================
-[2025-08-27T14:17:08.703+0000] {manager.py:846} INFO - 
+[2025-08-27T14:17:08.703+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -175,7 +175,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:16:40
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:16:38
 ================================================================================
-[2025-08-27T14:17:39.323+0000] {manager.py:846} INFO - 
+[2025-08-27T14:17:39.323+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -218,7 +218,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:17:10
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.11s           2025-08-27T14:17:09
 ================================================================================
-[2025-08-27T14:18:09.803+0000] {manager.py:846} INFO - 
+[2025-08-27T14:18:09.803+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -261,7 +261,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:17:41
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.17s           2025-08-27T14:17:39
 ================================================================================
-[2025-08-27T14:18:39.877+0000] {manager.py:846} INFO - 
+[2025-08-27T14:18:39.877+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -304,7 +304,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.20s           2025-08-27T14:18:12
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:18:10
 ================================================================================
-[2025-08-27T14:19:10.622+0000] {manager.py:846} INFO - 
+[2025-08-27T14:19:10.622+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -347,7 +347,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.10s           2025-08-27T14:18:42
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.05s           2025-08-27T14:18:40
 ================================================================================
-[2025-08-27T14:19:41.220+0000] {manager.py:846} INFO - 
+[2025-08-27T14:19:41.220+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -390,7 +390,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.08s           2025-08-27T14:19:13
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.05s           2025-08-27T14:19:11
 ================================================================================
-[2025-08-27T14:20:11.692+0000] {manager.py:846} INFO - 
+[2025-08-27T14:20:11.692+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -435,7 +435,7 @@ File Path                                                                       
 ================================================================================
 [2025-08-27T14:20:38.045+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T14:20:38.056+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T14:20:42.108+0000] {manager.py:846} INFO - 
+[2025-08-27T14:20:42.108+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -478,7 +478,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:20:14
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:20:12
 ================================================================================
-[2025-08-27T14:21:12.499+0000] {manager.py:846} INFO - 
+[2025-08-27T14:21:12.499+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -521,7 +521,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:20:44
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:20:42
 ================================================================================
-[2025-08-27T14:21:42.873+0000] {manager.py:846} INFO - 
+[2025-08-27T14:21:42.873+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -564,7 +564,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:21:15
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.05s           2025-08-27T14:21:12
 ================================================================================
-[2025-08-27T14:22:13.399+0000] {manager.py:846} INFO - 
+[2025-08-27T14:22:13.399+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -607,7 +607,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:21:45
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.10s           2025-08-27T14:21:43
 ================================================================================
-[2025-08-27T14:22:43.771+0000] {manager.py:846} INFO - 
+[2025-08-27T14:22:43.771+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -650,7 +650,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:22:16
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:22:13
 ================================================================================
-[2025-08-27T14:23:14.559+0000] {manager.py:846} INFO - 
+[2025-08-27T14:23:14.559+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -693,7 +693,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.08s           2025-08-27T14:22:47
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.17s           2025-08-27T14:22:44
 ================================================================================
-[2025-08-27T14:23:44.990+0000] {manager.py:846} INFO - 
+[2025-08-27T14:23:44.990+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -736,7 +736,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:23:17
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.11s           2025-08-27T14:23:14
 ================================================================================
-[2025-08-27T14:24:15.464+0000] {manager.py:846} INFO - 
+[2025-08-27T14:24:15.464+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -779,7 +779,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:23:47
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:23:45
 ================================================================================
-[2025-08-27T14:24:46.020+0000] {manager.py:846} INFO - 
+[2025-08-27T14:24:46.020+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -822,7 +822,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:24:18
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T14:24:15
 ================================================================================
-[2025-08-27T14:25:16.449+0000] {manager.py:846} INFO - 
+[2025-08-27T14:25:16.449+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -867,7 +867,7 @@ File Path                                                                       
 ================================================================================
 [2025-08-27T14:25:38.763+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T14:25:38.775+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T14:25:46.868+0000] {manager.py:846} INFO - 
+[2025-08-27T14:25:46.868+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -910,7 +910,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:25:19
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:25:16
 ================================================================================
-[2025-08-27T14:26:17.295+0000] {manager.py:846} INFO - 
+[2025-08-27T14:26:17.295+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -953,7 +953,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:25:49
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:25:47
 ================================================================================
-[2025-08-27T14:26:47.703+0000] {manager.py:846} INFO - 
+[2025-08-27T14:26:47.703+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -996,7 +996,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:26:20
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:26:17
 ================================================================================
-[2025-08-27T14:27:18.322+0000] {manager.py:846} INFO - 
+[2025-08-27T14:27:18.322+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1039,7 +1039,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.08s           2025-08-27T14:26:50
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:26:48
 ================================================================================
-[2025-08-27T14:27:48.802+0000] {manager.py:846} INFO - 
+[2025-08-27T14:27:48.802+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1082,7 +1082,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T14:27:21
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.05s           2025-08-27T14:27:18
 ================================================================================
-[2025-08-27T14:28:19.022+0000] {manager.py:846} INFO - 
+[2025-08-27T14:28:19.022+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1125,7 +1125,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:27:51
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:27:49
 ================================================================================
-[2025-08-27T14:28:49.472+0000] {manager.py:846} INFO - 
+[2025-08-27T14:28:49.472+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1168,7 +1168,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:28:22
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:28:19
 ================================================================================
-[2025-08-27T14:29:19.964+0000] {manager.py:846} INFO - 
+[2025-08-27T14:29:19.964+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1211,7 +1211,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:28:52
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T14:28:49
 ================================================================================
-[2025-08-27T14:29:50.351+0000] {manager.py:846} INFO - 
+[2025-08-27T14:29:50.351+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1254,7 +1254,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:29:22
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:29:20
 ================================================================================
-[2025-08-27T14:30:20.852+0000] {manager.py:846} INFO - 
+[2025-08-27T14:30:20.852+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1299,7 +1299,7 @@ File Path                                                                       
 ================================================================================
 [2025-08-27T14:30:39.209+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T14:30:39.220+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T14:30:51.329+0000] {manager.py:846} INFO - 
+[2025-08-27T14:30:51.329+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1342,7 +1342,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T14:30:23
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T14:30:21
 ================================================================================
-[2025-08-27T14:31:21.690+0000] {manager.py:846} INFO - 
+[2025-08-27T14:31:21.690+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1385,7 +1385,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T14:30:54
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:30:51
 ================================================================================
-[2025-08-27T14:31:52.281+0000] {manager.py:846} INFO - 
+[2025-08-27T14:31:52.281+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1428,7 +1428,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:31:24
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:31:22
 ================================================================================
-[2025-08-27T14:32:22.743+0000] {manager.py:846} INFO - 
+[2025-08-27T14:32:22.743+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1471,7 +1471,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T14:31:55
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T14:31:52
 ================================================================================
-[2025-08-27T14:32:53.141+0000] {manager.py:846} INFO - 
+[2025-08-27T14:32:53.141+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1514,7 +1514,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T14:32:25
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T14:32:23
 ================================================================================
-[2025-08-27T14:33:23.632+0000] {manager.py:846} INFO - 
+[2025-08-27T14:33:23.632+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1558,12 +1558,12 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.10s           2025-08-27T14:32:53
 ================================================================================
 [2025-08-27T14:33:52.135+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
-[2025-08-27T15:30:17.780+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-08-27T15:30:17.780+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time
 [2025-08-27T15:30:17.781+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
 [2025-08-27T15:30:17.781+0000] {manager.py:486} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
 [2025-08-27T15:30:17.781+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T15:30:17.785+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T15:30:17.931+0000] {manager.py:846} INFO - 
+[2025-08-27T15:30:17.931+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1606,7 +1606,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/subdags/subdag.py                                                    0           0
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/plugins/workday.py                                                   0           0
 ================================================================================
-[2025-08-27T15:30:48.672+0000] {manager.py:846} INFO - 
+[2025-08-27T15:30:48.672+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1649,7 +1649,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.10s           2025-08-27T15:30:19
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:30:18
 ================================================================================
-[2025-08-27T15:31:19.267+0000] {manager.py:846} INFO - 
+[2025-08-27T15:31:19.267+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1692,7 +1692,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:30:49
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.12s           2025-08-27T15:30:49
 ================================================================================
-[2025-08-27T15:31:49.733+0000] {manager.py:846} INFO - 
+[2025-08-27T15:31:49.733+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1735,7 +1735,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:31:20
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:31:19
 ================================================================================
-[2025-08-27T15:32:20.273+0000] {manager.py:846} INFO - 
+[2025-08-27T15:32:20.273+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1778,7 +1778,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:31:50
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.09s           2025-08-27T15:31:50
 ================================================================================
-[2025-08-27T15:32:50.980+0000] {manager.py:846} INFO - 
+[2025-08-27T15:32:50.980+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1821,7 +1821,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:32:21
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.11s           2025-08-27T15:32:20
 ================================================================================
-[2025-08-27T15:33:21.482+0000] {manager.py:846} INFO - 
+[2025-08-27T15:33:21.482+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1864,7 +1864,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:32:51
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:32:51
 ================================================================================
-[2025-08-27T15:33:51.943+0000] {manager.py:846} INFO - 
+[2025-08-27T15:33:51.943+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1907,7 +1907,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:33:22
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:33:21
 ================================================================================
-[2025-08-27T15:34:22.392+0000] {manager.py:846} INFO - 
+[2025-08-27T15:34:22.392+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1950,7 +1950,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:33:52
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:33:52
 ================================================================================
-[2025-08-27T15:34:52.819+0000] {manager.py:846} INFO - 
+[2025-08-27T15:34:52.819+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -1995,7 +1995,7 @@ File Path                                                                       
 ================================================================================
 [2025-08-27T15:35:18.237+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T15:35:18.248+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T15:35:23.302+0000] {manager.py:846} INFO - 
+[2025-08-27T15:35:23.302+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2038,7 +2038,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:34:53
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:34:53
 ================================================================================
-[2025-08-27T15:35:53.658+0000] {manager.py:846} INFO - 
+[2025-08-27T15:35:53.658+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2081,7 +2081,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:35:24
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:35:23
 ================================================================================
-[2025-08-27T15:36:24.000+0000] {manager.py:846} INFO - 
+[2025-08-27T15:36:24.000+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2124,7 +2124,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:35:54
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:35:54
 ================================================================================
-[2025-08-27T15:36:54.398+0000] {manager.py:846} INFO - 
+[2025-08-27T15:36:54.398+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2168,12 +2168,12 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:36:24
 ================================================================================
 [2025-08-27T15:36:58.541+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
-[2025-08-27T15:37:56.934+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-08-27T15:37:56.934+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time
 [2025-08-27T15:37:56.935+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
 [2025-08-27T15:37:56.935+0000] {manager.py:486} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
 [2025-08-27T15:37:56.935+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T15:37:56.938+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T15:37:57.085+0000] {manager.py:846} INFO - 
+[2025-08-27T15:37:57.085+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2216,7 +2216,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/subdags/subdag.py                                                    0           0
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/plugins/workday.py                                                   0           0
 ================================================================================
-[2025-08-27T15:38:27.095+0000] {manager.py:846} INFO - 
+[2025-08-27T15:38:27.095+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2259,7 +2259,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:37:58
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:37:57
 ================================================================================
-[2025-08-27T15:38:57.507+0000] {manager.py:846} INFO - 
+[2025-08-27T15:38:57.507+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2302,7 +2302,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:38:29
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.09s           2025-08-27T15:38:28
 ================================================================================
-[2025-08-27T15:39:27.916+0000] {manager.py:846} INFO - 
+[2025-08-27T15:39:27.916+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2345,7 +2345,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:38:59
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:38:58
 ================================================================================
-[2025-08-27T15:39:58.299+0000] {manager.py:846} INFO - 
+[2025-08-27T15:39:58.299+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2388,7 +2388,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:39:29
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:39:29
 ================================================================================
-[2025-08-27T15:40:28.972+0000] {manager.py:846} INFO - 
+[2025-08-27T15:40:28.972+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2431,7 +2431,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T15:40:00
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:39:59
 ================================================================================
-[2025-08-27T15:40:59.726+0000] {manager.py:846} INFO - 
+[2025-08-27T15:40:59.726+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2474,7 +2474,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.13s           2025-08-27T15:40:31
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:40:30
 ================================================================================
-[2025-08-27T15:41:30.033+0000] {manager.py:846} INFO - 
+[2025-08-27T15:41:30.033+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2518,12 +2518,12 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:41:01
 ================================================================================
 [2025-08-27T15:41:30.661+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
-[2025-08-27T15:42:14.449+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-08-27T15:42:14.449+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time
 [2025-08-27T15:42:14.450+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
 [2025-08-27T15:42:14.450+0000] {manager.py:486} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
 [2025-08-27T15:42:14.451+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T15:42:14.455+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T15:42:14.615+0000] {manager.py:846} INFO - 
+[2025-08-27T15:42:14.615+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2566,7 +2566,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/subdags/subdag.py                                                    0           0
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/plugins/workday.py                                                   0           0
 ================================================================================
-[2025-08-27T15:42:45.386+0000] {manager.py:846} INFO - 
+[2025-08-27T15:42:45.386+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2609,7 +2609,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.09s           2025-08-27T15:42:15
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:42:15
 ================================================================================
-[2025-08-27T15:43:15.891+0000] {manager.py:846} INFO - 
+[2025-08-27T15:43:15.891+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2652,7 +2652,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.10s           2025-08-27T15:42:46
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.09s           2025-08-27T15:42:45
 ================================================================================
-[2025-08-27T15:43:46.413+0000] {manager.py:846} INFO - 
+[2025-08-27T15:43:46.413+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2695,7 +2695,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.10s           2025-08-27T15:43:16
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:43:16
 ================================================================================
-[2025-08-27T15:44:17.002+0000] {manager.py:846} INFO - 
+[2025-08-27T15:44:17.002+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2738,7 +2738,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T15:43:47
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:43:46
 ================================================================================
-[2025-08-27T15:44:47.608+0000] {manager.py:846} INFO - 
+[2025-08-27T15:44:47.608+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2781,7 +2781,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:44:18
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:44:17
 ================================================================================
-[2025-08-27T15:45:18.142+0000] {manager.py:846} INFO - 
+[2025-08-27T15:45:18.142+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2824,7 +2824,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.10s           2025-08-27T15:44:48
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:44:47
 ================================================================================
-[2025-08-27T15:45:48.570+0000] {manager.py:846} INFO - 
+[2025-08-27T15:45:48.570+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2867,7 +2867,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.08s           2025-08-27T15:45:18
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:45:18
 ================================================================================
-[2025-08-27T15:46:18.974+0000] {manager.py:846} INFO - 
+[2025-08-27T15:46:18.974+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2910,7 +2910,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.08s           2025-08-27T15:45:49
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:45:48
 ================================================================================
-[2025-08-27T15:46:49.399+0000] {manager.py:846} INFO - 
+[2025-08-27T15:46:49.399+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2955,7 +2955,7 @@ File Path                                                                       
 ================================================================================
 [2025-08-27T15:47:14.776+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T15:47:14.787+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T15:47:19.843+0000] {manager.py:846} INFO - 
+[2025-08-27T15:47:19.843+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -2998,7 +2998,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:46:50
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:46:49
 ================================================================================
-[2025-08-27T15:47:50.492+0000] {manager.py:846} INFO - 
+[2025-08-27T15:47:50.492+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3041,7 +3041,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.08s           2025-08-27T15:47:20
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:47:20
 ================================================================================
-[2025-08-27T15:48:21.007+0000] {manager.py:846} INFO - 
+[2025-08-27T15:48:21.007+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3084,7 +3084,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T15:47:51
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:47:50
 ================================================================================
-[2025-08-27T15:48:51.487+0000] {manager.py:846} INFO - 
+[2025-08-27T15:48:51.487+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3127,7 +3127,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T15:48:21
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:48:21
 ================================================================================
-[2025-08-27T15:49:21.973+0000] {manager.py:846} INFO - 
+[2025-08-27T15:49:21.973+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3170,7 +3170,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:48:52
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.07s           2025-08-27T15:48:51
 ================================================================================
-[2025-08-27T15:49:52.398+0000] {manager.py:846} INFO - 
+[2025-08-27T15:49:52.398+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3213,7 +3213,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T15:49:22
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:49:22
 ================================================================================
-[2025-08-27T15:50:22.654+0000] {manager.py:846} INFO - 
+[2025-08-27T15:50:22.654+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3256,7 +3256,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.05s           2025-08-27T15:49:53
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.06s           2025-08-27T15:49:52
 ================================================================================
-[2025-08-27T15:50:53.173+0000] {manager.py:846} INFO - 
+[2025-08-27T15:50:53.173+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3299,7 +3299,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:50:23
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:50:23
 ================================================================================
-[2025-08-27T15:51:23.656+0000] {manager.py:846} INFO - 
+[2025-08-27T15:51:23.656+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3342,7 +3342,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.07s           2025-08-27T15:50:54
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:50:53
 ================================================================================
-[2025-08-27T15:51:54.193+0000] {manager.py:846} INFO - 
+[2025-08-27T15:51:54.193+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3387,7 +3387,7 @@ File Path                                                                       
 ================================================================================
 [2025-08-27T15:52:15.511+0000] {manager.py:724} INFO - Searching for files in /opt/airflow/dags
 [2025-08-27T15:52:15.530+0000] {manager.py:727} INFO - There are 36 files in /opt/airflow/dags
-[2025-08-27T15:52:24.623+0000] {manager.py:846} INFO - 
+[2025-08-27T15:52:24.623+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3430,7 +3430,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:51:55
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.08s           2025-08-27T15:51:54
 ================================================================================
-[2025-08-27T15:52:55.106+0000] {manager.py:846} INFO - 
+[2025-08-27T15:52:55.106+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
@@ -3473,7 +3473,7 @@ File Path                                                                       
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_branch_datetime_operator.py                                  3           0  0.06s           2025-08-27T15:52:25
 /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_datasets.py                                                  6           0  0.05s           2025-08-27T15:52:25
 ================================================================================
-[2025-08-27T15:53:25.641+0000] {manager.py:846} INFO - 
+[2025-08-27T15:53:25.641+0000] {manager.py:846} INFO -
 ================================================================================
 DAG File Processing Stats
 
