@@ -95,6 +95,7 @@ Este repositorio usa [pre-commit](https://pre-commit.com/) para ejecutar formate
 pip install pre-commit
 pre-commit install          # instala el hook en .git/hooks
 pre-commit run -a           # (opcional) ejecuta sobre todo el repo
+```
 
 
 ## Flujo ETL
@@ -112,4 +113,15 @@ pre-commit run -a           # (opcional) ejecuta sobre todo el repo
    - Unión por **codigo_postal** y **municipio**
    - Salida en:
      ```
-     output/final/dataset_final.csv
+     output/final/integration.csv
+     ```
+
+### Airflow dashboard
+
+**Vista Grid del DAG**
+
+![Airflow Grid](./imagenes/grid.png)
+
+**Vista Graph del DAG**
+
+![Airflow Graph](./imagenes/graph.png)
