@@ -120,8 +120,8 @@ pre-commit run -a           # (opcional) ejecuta sobre todo el repo
 
 **Vista Grid del DAG**
 
-![Airflow Grid](./imagenes/grid.png)
+![Airflow Grid](./images/grid.png)
 
 **Vista Graph del DAG**
 
-![Airflow Graph](./imagenes/graph.png)
+![Airflow Graph](./images/graph.png)
